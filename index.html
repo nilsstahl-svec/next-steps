@@ -1,344 +1,225 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>TMT 2026 | Nächster Schritt</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Next Step Check | TMT 2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800&family=Fjalla+One&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700&family=Fjalla+One&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --lime: #d3d800;
       --white: #ffffff;
       --sage: #7c8e8e;
-      --sage-light: #eef3f1;
-      --sage-soft: #f7f9f8;
       --teal: #4e6f6e;
       --dark: #454940;
       --black: #050505;
-      --muted: #6e756d;
-      --line: rgba(69, 73, 64, 0.13);
-      --shadow: 0 22px 60px rgba(69, 73, 64, 0.14);
-      --shadow-soft: 0 12px 34px rgba(69, 73, 64, 0.11);
-      --radius-xl: 32px;
-      --radius-lg: 24px;
-      --radius-md: 18px;
-      --font-title: "Fjalla One", Impact, "Arial Narrow", sans-serif;
-      --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      --font-body: "Fira Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --bg: #f7f8f1;
+      --card: #ffffff;
+      --text: #252821;
+      --muted: #62685f;
+      --line: rgba(69, 73, 64, 0.16);
+      --soft-lime: rgba(211, 216, 0, 0.18);
+      --soft-sage: rgba(124, 142, 142, 0.12);
+      --shadow: 0 22px 55px rgba(69, 73, 64, 0.13);
+      --radius: 26px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    html {
-      min-height: 100%;
-      background: var(--sage-soft);
-    }
-
     body {
       margin: 0;
-      font-family: var(--font-body);
-      color: var(--dark);
+      font-family: "Fira Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 18% 8%, rgba(211, 216, 0, 0.2) 0, transparent 28%),
-        radial-gradient(circle at 82% 16%, rgba(124, 142, 142, 0.22) 0, transparent 30%),
-        linear-gradient(135deg, #ffffff 0%, #f5f7f3 48%, #edf2ef 100%);
+        radial-gradient(circle at 16% 8%, rgba(211, 216, 0, 0.34) 0, transparent 30%),
+        radial-gradient(circle at 86% 12%, rgba(124, 142, 142, 0.18) 0, transparent 34%),
+        linear-gradient(135deg, #ffffff 0%, #f7f8f1 52%, #edf0e7 100%);
+      color: var(--text);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       padding: 28px 16px;
     }
 
-    button {
-      font: inherit;
-    }
-
-    .page {
+    main {
       width: 100%;
       max-width: 880px;
-      min-height: auto;
-      margin: 0;
-      padding: 0;
-      display: block;
-    }
-
-    .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 12px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 0;
-      min-width: 0;
-    }
-
-    .brand-mark {
-      display: none;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.05;
-      min-width: 0;
-    }
-
-    .brand-kicker {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--teal);
-      white-space: nowrap;
-    }
-
-    .brand-name {
-      font-family: var(--font-title);
-      font-size: 22px;
-      letter-spacing: 0.01em;
-      color: var(--black);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: 400;
-    }
-
-    .progress-pill {
-      display: none;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.78);
-      border: 1px solid var(--line);
-      box-shadow: 0 8px 22px rgba(69, 73, 64, 0.08);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--teal);
-      white-space: nowrap;
-    }
-
-    .progress-pill.is-visible {
-      display: inline-flex;
-    }
-
-    .shell {
-      display: block;
-      padding-top: 0;
     }
 
     .card {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.94);
-      border: 1px solid rgba(255, 255, 255, 0.76);
-      border-radius: 26px;
-      box-shadow: 0 22px 55px rgba(69, 73, 64, 0.16);
-      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      color: var(--text);
     }
 
     .hero {
-      padding: clamp(28px, 7vw, 62px);
-      display: grid;
-      gap: 24px;
+      padding: 34px 30px 24px;
+      border-bottom: 1px solid var(--line);
       position: relative;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+      transition: padding 0.2s ease;
       background:
-        linear-gradient(90deg, rgba(211, 216, 0, 0.42), transparent 38%),
-        radial-gradient(circle at 92% 16%, rgba(78, 111, 110, 0.12), transparent 16rem);
-      opacity: 0.75;
+        radial-gradient(circle at top right, rgba(211, 216, 0, 0.38), transparent 40%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(243, 245, 235, 0.96));
     }
 
-    .hero > * {
-      position: relative;
-      z-index: 1;
+    .hero.compact {
+      padding: 18px 30px;
     }
 
-    .eyebrow {
-      width: fit-content;
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: var(--black);
-      color: var(--white);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow-dot {
-      width: 9px;
-      height: 9px;
-      border-radius: 50%;
-      background: var(--lime);
-      box-shadow: 0 0 0 5px rgba(211, 216, 0, 0.18);
-    }
-
-    h1, h2, p {
-      margin: 0;
-    }
-
-    .hero-title {
-      max-width: 760px;
-      font-family: var(--font-title);
-      font-size: clamp(40px, 10vw, 92px);
-      line-height: 0.98;
-      letter-spacing: -0.01em;
-      text-transform: uppercase;
-      color: var(--black);
-      font-weight: 400;
-    }
-
-    .hero-title span {
-      display: block;
-      color: var(--teal);
-    }
-
-    .hero-copy {
-      max-width: 660px;
-      font-size: clamp(17px, 2.6vw, 22px);
-      line-height: 1.42;
-      color: var(--dark);
-      font-weight: 500;
-    }
-
-    .hero-copy strong,
-    .answer-copy strong,
-    .result-text strong {
-      font-weight: 800;
-      color: var(--black);
-    }
-
-    .actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-
-    .btn {
-      appearance: none;
-      border: 0;
-      border-radius: 999px;
-      min-height: 52px;
-      padding: 0 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
-      user-select: none;
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn-primary {
-      background: var(--lime);
-      color: var(--black);
-      box-shadow: 0 14px 28px rgba(211, 216, 0, 0.28);
-    }
-
-    .btn-primary:hover {
-      box-shadow: 0 18px 34px rgba(211, 216, 0, 0.35);
-    }
-
-    .btn-ghost {
-      background: rgba(255, 255, 255, 0.78);
-      color: var(--dark);
-      border: 1px solid var(--line);
-    }
-
-    .quiz {
+    .hero.compact h1,
+    .hero.compact .intro {
       display: none;
-      padding: 26px 30px 32px;
-      gap: 22px;
     }
 
-    .quiz.is-visible {
-      display: grid;
+    .hero.compact .topline {
+      margin-bottom: 0;
     }
 
-    .question-head {
-      display: grid;
-      gap: 14px;
-    }
-
-    .question-meta {
+    .topline {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 14px;
+      gap: 18px;
+      margin-bottom: 22px;
     }
 
-    .question-number {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-      color: var(--teal);
-    }
-
-    .mini-title {
-      font-family: var(--font-title);
-      font-size: clamp(24px, 4.4vw, 38px);
-      line-height: 1;
-      letter-spacing: 0;
-      color: var(--black);
-      font-weight: 400;
-    }
-
-    .question-title {
-      font-size: clamp(1.55rem, 3.7vw, 2.25rem);
-      line-height: 1.22;
-      letter-spacing: -0.015em;
-      color: var(--black);
+    .brandmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--dark);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.86rem;
       font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--lime);
+      padding: 8px 13px;
+      border-radius: 999px;
+      border: 1px solid rgba(211, 216, 0, 0.8);
+    }
+
+    h1 {
+      font-family: "Fjalla One", sans-serif;
+      text-transform: uppercase;
+      margin: 0 0 14px;
+      font-size: clamp(2.3rem, 7vw, 4.4rem);
+      line-height: 1.12;
+      letter-spacing: 0.015em;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .intro {
+      font-size: 1.08rem;
+      line-height: 1.6;
+      max-width: 720px;
+      color: var(--muted);
       margin: 0;
     }
 
+    .content {
+      padding: 26px 30px 32px;
+      background: rgba(255, 255, 255, 0.94);
+    }
+
+    .meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .meta-item {
+      background: rgba(247, 248, 241, 0.9);
+      border: 1px solid var(--line);
+      padding: 14px 15px;
+      border-radius: 18px;
+      font-size: 0.95rem;
+    }
+
+    .meta-item strong {
+      display: block;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 5px;
+    }
+
+    .progress-wrap {
+      margin: 8px 0 24px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+    }
+
     .progress-track {
-      height: 10px;
+      height: 11px;
+      background: rgba(69, 73, 64, 0.12);
       border-radius: 999px;
-      background: rgba(69, 73, 64, 0.1);
       overflow: hidden;
     }
 
     .progress-bar {
       height: 100%;
+      background: linear-gradient(90deg, var(--lime), var(--teal));
       width: 0%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--lime), #eef243);
-      transition: width 260ms ease;
+      transition: width 0.25s ease;
+      box-shadow: 0 0 18px rgba(211, 216, 0, 0.35);
+    }
+
+    .question {
+      display: none;
+      animation: fadeIn 0.24s ease;
+    }
+
+    .question.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      font-family: "Fira Sans", system-ui, sans-serif;
+      text-transform: none;
+      font-size: clamp(1.55rem, 3.7vw, 2.25rem);
+      line-height: 1.22;
+      margin: 0 0 22px;
+      letter-spacing: -0.015em;
+      font-weight: 700;
+      color: var(--black);
     }
 
     .answers {
@@ -347,606 +228,566 @@
     }
 
     .answer {
-      appearance: none;
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: 20px;
       background: #ffffff;
-      color: var(--dark);
+      color: var(--text);
+      border-radius: 20px;
       padding: 17px 18px;
-      display: grid;
-      grid-template-columns: 38px 1fr;
-      gap: 13px;
-      align-items: center;
       text-align: left;
+      font-family: "Fira Sans", sans-serif;
+      font-size: 1rem;
+      line-height: 1.45;
       cursor: pointer;
-      box-shadow: none;
       transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-      min-height: 0;
     }
 
     .answer:hover {
+      border-color: rgba(78, 111, 110, 0.5);
+      background: rgba(124, 142, 142, 0.08);
       transform: translateY(-1px);
-      border-color: rgba(78, 111, 110, 0.32);
-      box-shadow: 0 13px 30px rgba(69, 73, 64, 0.11);
+      box-shadow: 0 12px 26px rgba(69, 73, 64, 0.08);
     }
 
-    .answer.is-selected {
+    .answer.selected {
       border-color: var(--lime);
       background: rgba(211, 216, 0, 0.2);
-      box-shadow: 0 0 0 3px rgba(211, 216, 0, 0.35);
+      box-shadow: 0 0 0 3px rgba(211, 216, 0, 0.32);
     }
 
-    .answer.is-selected .answer-letter {
-      background: var(--lime);
-      color: var(--black);
-      border-color: rgba(5, 5, 5, 0.08);
-    }
-
-    .answer:focus-visible,
-    .btn:focus-visible {
-      outline: 3px solid rgba(211, 216, 0, 0.75);
-      outline-offset: 3px;
-    }
-
-    .answer-letter {
-      width: 38px;
-      height: 38px;
-      border-radius: 14px;
-      background: var(--sage-light);
-      color: var(--teal);
-      display: grid;
-      place-items: center;
-      font-family: var(--font-mono);
-      font-size: 14px;
-      font-weight: 800;
-      border: 1px solid rgba(78, 111, 110, 0.12);
-    }
-
-    .answer-copy {
-      font-size: 1rem;
-      line-height: 1.45;
-      font-weight: 500;
-    }
-
-    .quiz-footer {
+    .nav {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-top: 4px;
+      gap: 12px;
+      margin-top: 26px;
     }
 
-    .helper-text {
-      font-family: var(--font-mono);
-      font-size: 11px;
-      line-height: 1.35;
-      color: var(--muted);
+    button.control {
+      border: 0;
+      border-radius: 999px;
+      padding: 13px 21px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.95rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, background 0.15s ease;
+    }
+
+    button.control:hover:not(:disabled) {
+      transform: translateY(-1px);
+    }
+
+    button.control:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .secondary {
+      background: rgba(69, 73, 64, 0.1);
+      color: var(--dark);
+    }
+
+    .primary {
+      background: var(--lime);
+      color: var(--black);
+    }
+
+    .primary:hover:not(:disabled) {
+      background: #eef300;
     }
 
     .result {
       display: none;
-      padding: clamp(24px, 6vw, 54px);
-      gap: 20px;
+      animation: fadeIn 0.25s ease;
     }
 
-    .result.is-visible {
-      display: grid;
+    .result.active {
+      display: block;
     }
 
-    .result-badge {
-      width: fit-content;
-      border-radius: 999px;
-      background: var(--lime);
-      color: var(--black);
-      padding: 9px 13px;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
-    }
-
-    .result-title {
-      max-width: 820px;
-      font-family: var(--font-title);
-      font-size: clamp(38px, 9vw, 84px);
-      line-height: 0.98;
-      letter-spacing: -0.02em;
-      text-transform: uppercase;
-      color: var(--black);
-    }
-
-    .result-text {
-      max-width: 700px;
-      font-size: clamp(18px, 3vw, 24px);
-      line-height: 1.42;
-      font-weight: 500;
-      color: var(--dark);
-    }
-
-    .score-box {
-      display: none;
-      margin-top: 4px;
-      border-radius: var(--radius-lg);
-      background: var(--sage-soft);
+    .scores-card {
+      background: rgba(247, 248, 241, 0.92);
       border: 1px solid var(--line);
-      padding: 16px;
-      gap: 10px;
+      border-radius: 24px;
+      padding: 22px;
+      margin-bottom: 18px;
     }
 
-    .score-box.is-visible {
+    .scores-card h2 {
+      margin-bottom: 16px;
+    }
+
+    .scores {
       display: grid;
+      gap: 12px;
     }
 
     .score-row {
       display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 12px;
+      grid-template-columns: 230px 1fr 38px;
       align-items: center;
-      font-family: var(--font-mono);
-      font-size: 12px;
+      gap: 12px;
+      font-size: 0.96rem;
+    }
+
+    .score-label {
+      font-weight: 700;
+    }
+
+    .score-track {
+      height: 13px;
+      background: rgba(69, 73, 64, 0.13);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .score-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--lime), var(--teal));
+      width: 0%;
+      border-radius: 999px;
+    }
+
+    .score-number {
+      font-family: "IBM Plex Mono", monospace;
       font-weight: 700;
       color: var(--dark);
     }
 
-    .score-name {
-      min-width: 0;
+    .result-box {
+      background: linear-gradient(135deg, rgba(211, 216, 0, 0.24), #ffffff);
+      border: 1px solid rgba(211, 216, 0, 0.72);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 18px;
     }
 
-    .score-value {
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: var(--white);
-      color: var(--black);
+    .result-box h2 {
+      margin-bottom: 12px;
+    }
+
+    .result-box p {
+      margin: 0;
+      color: var(--text);
+      font-size: 1.08rem;
+      line-height: 1.62;
+    }
+
+    .note {
+      background: #ffffff;
       border: 1px solid var(--line);
-    }
-
-    .debug-toggle {
-      border: 0;
-      background: transparent;
       color: var(--muted);
-      cursor: pointer;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      justify-self: start;
-      padding: 0;
+      border-radius: 18px;
+      padding: 16px;
+      line-height: 1.58;
+      margin: 0 0 18px;
     }
 
-    .screen {
+    .hidden {
       display: none;
     }
 
-    .screen.is-visible {
-      display: block;
-    }
-
-    @media (max-width: 560px) {
-      .page {
-        padding: 14px 10px 22px;
+    @media (max-width: 680px) {
+      body {
+        padding: 12px;
       }
 
-      .topbar {
-        margin-bottom: 12px;
+      .hero, .content {
+        padding-left: 18px;
+        padding-right: 18px;
       }
 
-      .brand-mark {
-        display: none;
-      }
-
-      .brand-name {
-        font-size: 19px;
-      }
-
-      .brand-kicker {
-        font-size: 10px;
-      }
-
-      .card {
-        border-radius: 28px;
-      }
-
-      .hero {
-        padding: 28px 20px 24px;
-        gap: 20px;
-      }
-
-      .hero-title {
-        font-size: clamp(46px, 16vw, 72px);
-      }
-
-      .actions,
-      .quiz-footer {
-        align-items: stretch;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .quiz {
-        padding: 22px 14px 18px;
-      }
-
-      .question-meta {
-        align-items: start;
+      .topline {
+        align-items: flex-start;
         flex-direction: column;
       }
 
-      .mini-title {
-        font-size: 25px;
+      .meta {
+        grid-template-columns: 1fr;
       }
 
-      .answer {
-        grid-template-columns: 34px 1fr;
-        gap: 11px;
-        padding: 15px 13px;
-        min-height: 74px;
-      }
-
-      .answer-letter {
-        width: 34px;
-        height: 34px;
-        border-radius: 12px;
-      }
-
-      .quiz-footer {
+      .nav {
         flex-direction: column-reverse;
+      }
+
+      button.control {
+        width: 100%;
+      }
+
+      .score-row {
+        grid-template-columns: 1fr;
+        gap: 7px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .score-row:last-child {
+        border-bottom: 0;
       }
     }
   </style>
 </head>
-
 <body>
-  <main class="page">
-    <header class="topbar" aria-label="TMT 2026 Header">
-      <div class="brand">
-        <div class="brand-text">
-          <div class="brand-kicker">TMT 2026</div>
-          <div class="brand-name">Nächster Schritt</div>
+  <main>
+    <section class="card">
+      <header class="hero">
+        <div class="topline">
+          <div class="brandmark">
+            <span>TMT 2026</span>
+          </div>
+          <div class="badge">Next Step Check</div>
+        </div>
+
+        <h1>Was ist dein nächster Schritt?</h1>
+        <p class="intro">
+          Du hast deinen Nebel wahrgenommen. Jetzt geht es darum, was dir helfen könnte, nicht einfach weiterzumachen, sondern wieder auf Jesus zu schauen.
+        </p>
+      </header>
+
+      <div class="content" id="quizArea">
+        <div class="meta" id="startMeta">
+          <div class="meta-item"><strong>Dauer</strong>ca. 3 Minuten</div>
+          <div class="meta-item"><strong>Format</strong>7 Multiple-Choice-Fragen</div>
+          <div class="meta-item"><strong>Ziel</strong>Ein möglicher nächster Schritt</div>
+        </div>
+
+        <div id="startScreen">
+          <button class="control primary" onclick="startQuiz()">Next Step starten</button>
+        </div>
+
+        <div id="questionScreen" class="hidden">
+          <div class="progress-wrap">
+            <div class="progress-top">
+              <span id="questionCounter">Frage 1 von 7</span>
+              <span id="answeredCounter">0 beantwortet</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+          </div>
+
+          <div id="questionsContainer"></div>
+
+          <div class="nav">
+            <button class="control secondary" id="backButton" onclick="prevQuestion()">Zurück</button>
+            <button class="control primary" id="nextButton" onclick="nextQuestion()" disabled>Weiter</button>
+          </div>
+        </div>
+
+        <div id="resultScreen" class="result">
+          <div class="scores-card">
+            <h2>Deine Auswertung</h2>
+            <div class="scores" id="scoresContainer"></div>
+          </div>
+
+          <div class="result-box">
+            <h2 id="resultTitle"></h2>
+            <p id="resultText"></p>
+          </div>
+
+          <div id="tieNote" class="note hidden"></div>
+
+          <div class="nav">
+            <button class="control secondary" onclick="restartQuiz()">Nochmal machen</button>
+          </div>
         </div>
       </div>
-      <div id="topProgress" class="progress-pill" aria-live="polite">Frage 1 / 7</div>
-    </header>
-
-    <section class="shell">
-      <article class="card">
-        <section id="startScreen" class="screen is-visible">
-          <div class="hero">
-            <div class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span> Safe · Orientierung · Jesus</div>
-            <h1 class="hero-title">Dein nächster <span>Schritt</span></h1>
-            <p class="hero-copy">
-              Du hast deinen Nebel wahrgenommen. Jetzt geht es darum, was dir helfen kann, nicht einfach weiterzumachen, sondern wieder <strong>auf Jesus zu schauen</strong>.
-            </p>
-            <div class="actions">
-              <button class="btn btn-primary" type="button" id="startBtn">Quiz starten</button>
-            </div>
-          </div>
-        </section>
-
-        <section id="quizScreen" class="screen quiz" aria-live="polite">
-          <div class="question-head">
-            <div class="question-meta">
-              <div>
-                <div id="questionNumber" class="question-number">Frage 1 von 7</div>
-                <h2 class="mini-title">Nächster Schritt</h2>
-              </div>
-              <div class="helper-text">Wähle, was am ehesten passt.</div>
-            </div>
-            <div class="progress-track" aria-hidden="true">
-              <div id="progressBar" class="progress-bar"></div>
-            </div>
-            <h2 id="questionTitle" class="question-title"></h2>
-          </div>
-
-          <div id="answers" class="answers"></div>
-
-          <footer class="quiz-footer">
-            <button class="btn btn-ghost" type="button" id="backBtn">Zurück</button>
-            <button class="btn btn-primary" type="button" id="nextBtn" disabled>Weiter</button>
-          </footer>
-        </section>
-
-        <section id="resultScreen" class="screen result" aria-live="polite">
-          <div class="result-badge">Auswertung</div>
-          <h2 id="resultTitle" class="result-title"></h2>
-          <p id="resultText" class="result-text"></p>
-
-          <button id="debugToggle" class="debug-toggle" type="button">Punkte anzeigen</button>
-          <div id="scoreBox" class="score-box"></div>
-
-          <div class="actions">
-            <button class="btn btn-primary" type="button" id="restartBtn">Nochmal machen</button>
-          </div>
-        </section>
-      </article>
     </section>
   </main>
 
   <script>
-    const RESULT_KEYS = {
-      ZEITRAUM: "zeitraum",
-      FREUNDE: "freunde",
-      GOTT: "gott"
-    };
-
-    const resultPriority = [
-      RESULT_KEYS.ZEITRAUM,
-      RESULT_KEYS.GOTT,
-      RESULT_KEYS.FREUNDE
-    ];
-
-    const resultData = {
-      [RESULT_KEYS.ZEITRAUM]: {
+    const categories = {
+      zeitraum: {
         label: "Zeitraum – Gespräch & Gebet",
+        priority: 1,
         title: "Dein nächster Schritt: Zeitraum – Gespräch & Gebet",
-        text: "Vielleicht ist dein nächster Schritt, nicht allein mit deinem <strong>Nebel</strong> zu bleiben. Geh in den Zeitraum, sprich <strong>ehrlich</strong> mit jemandem und lass für dich <strong>beten</strong>."
+        text: "Vielleicht ist dein nächster Schritt, nicht allein mit deinem Nebel zu bleiben. Geh in den Zeitraum, sprich ehrlich mit jemandem und lass für dich beten."
       },
-      [RESULT_KEYS.FREUNDE]: {
-        label: "Zeit mit Freunden genießen & Handy weg",
-        title: "Dein nächster Schritt: Zeit mit Freunden genießen & Handy weg",
-        text: "Vielleicht ist dein nächster Schritt, nicht direkt wieder in <strong>Ablenkung</strong> zu gehen. Leg das Handy bewusst weg und genieß <strong>echte Zeit</strong> mit Menschen um dich herum."
-      },
-      [RESULT_KEYS.GOTT]: {
+      gott: {
         label: "Zeit mit Gott suchen",
+        priority: 2,
         title: "Dein nächster Schritt: Zeit mit Gott suchen",
-        text: "Vielleicht ist dein nächster Schritt, nicht weiter allein zu <strong>kämpfen</strong>. Such bewusst Zeit mit <strong>Gott</strong>, im Lobpreis, im Gebet oder beim Bibellesen."
+        text: "Vielleicht ist dein nächster Schritt, nicht weiter allein zu kämpfen. Such bewusst Zeit mit Gott, im Lobpreis, im Gebet oder beim Bibellesen."
+      },
+      freunde: {
+        label: "Zeit mit Freunden genießen & Handy weg",
+        priority: 3,
+        title: "Dein nächster Schritt: Zeit mit Freunden genießen & Handy weg",
+        text: "Vielleicht ist dein nächster Schritt, nicht direkt wieder in Ablenkung zu gehen. Leg das Handy bewusst weg und genieß echte Zeit mit Menschen um dich herum."
       }
     };
 
-    const baseQuestions = [
+    const originalQuestions = [
       {
-        text: "Was war dein Ergebnis aus dem ersten Tool?",
+        question: "Was war dein Ergebnis aus dem ersten Tool?",
         answers: [
-          { text: "Optionen-Nebel", category: RESULT_KEYS.FREUNDE },
-          { text: "Identitäts-Nebel", category: RESULT_KEYS.FREUNDE },
-          { text: "Leistungs-Nebel", category: RESULT_KEYS.GOTT },
-          { text: "Mental-Health-Nebel", category: RESULT_KEYS.ZEITRAUM }
+          { text: "<strong>Optionen-Nebel</strong>", category: "freunde" },
+          { text: "<strong>Identitäts-Nebel</strong>", category: "freunde" },
+          { text: "<strong>Leistungs-Nebel</strong>", category: "gott" },
+          { text: "<strong>Mental-Health-Nebel</strong>", category: "zeitraum" }
         ]
       },
       {
-        text: "Was machst du oft, wenn es innerlich unruhig oder unklar wird?",
+        question: "Was machst du oft, wenn es innerlich unruhig oder unklar wird?",
         answers: [
-          { text: "Ich <strong>lenke mich ab</strong>, damit ich es erstmal nicht so merke.", category: RESULT_KEYS.FREUNDE },
-          { text: "Ich versuche, mich <strong>zusammenzureißen</strong> und es selbst zu regeln.", category: RESULT_KEYS.GOTT },
-          { text: "Ich <strong>behalte es eher für mich</strong>, auch wenn es eigentlich raus müsste.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Ich mache einfach weiter und merke erst später, dass es <strong>zu viel</strong> war.", category: RESULT_KEYS.ZEITRAUM }
+          { text: "Ich <strong>lenke mich ab</strong>, damit ich es erstmal nicht so merke.", category: "freunde" },
+          { text: "Ich versuche, mich <strong>zusammenzureißen</strong> und es selbst zu regeln.", category: "gott" },
+          { text: "Ich behalte es eher <strong>für mich</strong>, auch wenn es eigentlich raus müsste.", category: "zeitraum" },
+          { text: "Ich mache einfach <strong>weiter</strong> und merke erst später, dass es zu viel war.", category: "zeitraum" }
         ]
       },
       {
-        text: "Was kennst du von dir am ehesten?",
+        question: "Was kennst du von dir am ehesten?",
         answers: [
-          { text: "Ich bin oft am <strong>Handy</strong>, obwohl es mir danach nicht wirklich besser geht.", category: RESULT_KEYS.FREUNDE },
-          { text: "Ich rede mir ein, dass ich es <strong>allein schaffen</strong> muss.", category: RESULT_KEYS.GOTT },
-          { text: "Ich würde manchmal gerne <strong>reden</strong>, weiß aber nicht, wie ich anfangen soll.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Ich merke, dass ich <strong>Gott</strong> oft erst suche, wenn ich nicht mehr weiterweiß.", category: RESULT_KEYS.GOTT }
+          { text: "Ich bin oft am <strong>Handy</strong>, obwohl es mir danach nicht wirklich besser geht.", category: "freunde" },
+          { text: "Ich rede mir ein, dass ich es <strong>allein schaffen</strong> muss.", category: "gott" },
+          { text: "Ich würde manchmal gerne <strong>reden</strong>, weiß aber nicht, wie ich anfangen soll.", category: "zeitraum" },
+          { text: "Ich merke, dass ich <strong>Gott</strong> oft erst suche, wenn ich nicht mehr weiterweiß.", category: "gott" }
         ]
       },
       {
-        text: "Was wäre für dich gerade der größte Unterschied zum normalen Weitermachen?",
+        question: "Was wäre für dich gerade der größte Unterschied zum normalen Weitermachen?",
         answers: [
-          { text: "Nicht direkt wieder ans <strong>Handy</strong> gehen, sobald es unangenehm wird.", category: RESULT_KEYS.FREUNDE },
-          { text: "Nicht alles nur <strong>mit mir selbst</strong> ausmachen.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Nicht sofort wieder <strong>funktionieren</strong> müssen.", category: RESULT_KEYS.GOTT },
-          { text: "Nicht nur bei anderen sein, sondern auch <strong>wirklich da sein</strong>.", category: RESULT_KEYS.FREUNDE }
+          { text: "Nicht direkt wieder ans <strong>Handy</strong> gehen, sobald es unangenehm wird.", category: "freunde" },
+          { text: "Nicht alles nur <strong>mit mir selbst</strong> ausmachen.", category: "zeitraum" },
+          { text: "Nicht sofort wieder <strong>funktionieren</strong> müssen.", category: "gott" },
+          { text: "Nicht nur bei anderen sein, sondern auch wirklich <strong>da sein</strong>.", category: "freunde" }
         ]
       },
       {
-        text: "Was würde dir gerade wahrscheinlich guttun?",
+        question: "Was würde dir gerade wahrscheinlich guttun?",
         answers: [
-          { text: "Eine <strong>ehrliche Unterhaltung</strong> mit jemandem, der zuhört und mit mir betet.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Eine gute Zeit mit Leuten, ohne ständig aufs <strong>Handy</strong> zu schauen.", category: RESULT_KEYS.FREUNDE },
-          { text: "Ein ruhiger Moment mit <strong>Gott</strong>, ohne etwas beweisen zu müssen.", category: RESULT_KEYS.GOTT },
-          { text: "Jemand, der mit mir kurz <strong>sortiert</strong>, was gerade eigentlich los ist.", category: RESULT_KEYS.ZEITRAUM }
+          { text: "Eine <strong>ehrliche Unterhaltung</strong> mit jemandem, der zuhört und mit mir betet.", category: "zeitraum" },
+          { text: "Eine gute Zeit mit Leuten, ohne ständig aufs <strong>Handy</strong> zu schauen.", category: "freunde" },
+          { text: "Ein ruhiger Moment <strong>mit Gott</strong>, ohne etwas beweisen zu müssen.", category: "gott" },
+          { text: "Jemand, der mit mir kurz <strong>sortiert</strong>, was gerade eigentlich los ist.", category: "zeitraum" }
         ]
       },
       {
-        text: "Welcher Schritt fühlt sich für dich am ehesten realistisch an?",
+        question: "Welcher Schritt fühlt sich für dich am ehesten realistisch an?",
         answers: [
-          { text: "Ich könnte mein Handy heute bewusst für eine Zeit <strong>weglegen</strong>.", category: RESULT_KEYS.FREUNDE },
-          { text: "Ich könnte jemanden aus dem Team oder aus meinem Umfeld <strong>ansprechen</strong>.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Ich könnte mir Zeit nehmen, um zu <strong>beten</strong>, Bibel zu lesen oder im Lobpreis ehrlich mitzugehen.", category: RESULT_KEYS.GOTT },
-          { text: "Ich könnte bewusst mit <strong>Freunden</strong> unterwegs sein, ohne mich nur abzulenken.", category: RESULT_KEYS.FREUNDE }
+          { text: "Ich könnte mein Handy heute bewusst für eine Zeit <strong>weglegen</strong>.", category: "freunde" },
+          { text: "Ich könnte jemanden aus dem Team oder aus meinem Umfeld <strong>ansprechen</strong>.", category: "zeitraum" },
+          { text: "Ich könnte mir Zeit nehmen, um zu <strong>beten</strong>, Bibel zu lesen oder im Lobpreis ehrlich mitzugehen.", category: "gott" },
+          { text: "Ich könnte bewusst mit Freunden unterwegs sein, ohne mich nur <strong>abzulenken</strong>.", category: "freunde" }
         ]
       },
       {
-        text: "Wenn du an Petrus auf dem Wasser denkst: Was passt gerade am ehesten zu dir?",
+        question: "Wenn du an Petrus auf dem Wasser denkst: Was passt gerade am ehesten zu dir?",
         answers: [
-          { text: "Ich merke, dass ich oft auf alles andere schaue und mich davon <strong>treiben lasse</strong>.", category: RESULT_KEYS.FREUNDE },
-          { text: "Ich merke, dass ich gerade eine <strong>Hand brauche</strong>, nicht nur einen guten Vorsatz.", category: RESULT_KEYS.ZEITRAUM },
-          { text: "Ich merke, dass ich wieder mehr auf <strong>Jesus schauen</strong> will, statt alles selbst zu halten.", category: RESULT_KEYS.GOTT },
-          { text: "Ich merke, dass ich nicht so tun will, als wäre <strong>alles klar</strong>.", category: RESULT_KEYS.ZEITRAUM }
+          { text: "Ich merke, dass ich oft auf <strong>alles andere</strong> schaue und mich davon treiben lasse.", category: "freunde" },
+          { text: "Ich merke, dass ich gerade eine <strong>Hand</strong> brauche, nicht nur einen guten Vorsatz.", category: "zeitraum" },
+          { text: "Ich merke, dass ich wieder mehr auf <strong>Jesus</strong> schauen will, statt alles selbst zu halten.", category: "gott" },
+          { text: "Ich merke, dass ich nicht so tun will, als wäre <strong>alles klar</strong>.", category: "zeitraum" }
         ]
       }
     ];
 
     let questions = [];
+    let currentQuestion = 0;
+    let selectedAnswers = [];
 
     function shuffleArray(array) {
-      const shuffled = [...array];
-
-      for (let i = shuffled.length - 1; i > 0; i -= 1) {
+      const copy = [...array];
+      for (let i = copy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        [copy[i], copy[j]] = [copy[j], copy[i]];
       }
-
-      return shuffled;
+      return copy;
     }
 
-    function createQuizRun() {
-      questions = baseQuestions.map((question) => ({
+    function createShuffledQuestions() {
+      return originalQuestions.map(question => ({
         ...question,
-        answers: shuffleArray(question.answers).map((answer) => ({ ...answer }))
+        answers: shuffleArray(question.answers)
       }));
     }
 
-    const startScreen = document.getElementById("startScreen");
-    const quizScreen = document.getElementById("quizScreen");
-    const resultScreen = document.getElementById("resultScreen");
-    const startBtn = document.getElementById("startBtn");
-    const restartBtn = document.getElementById("restartBtn");
-    const backBtn = document.getElementById("backBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const nextBtn = document.getElementById("nextBtn");
-    const questionNumber = document.getElementById("questionNumber");
-    const questionTitle = document.getElementById("questionTitle");
-    const answersEl = document.getElementById("answers");
-    const progressBar = document.getElementById("progressBar");
-    const topProgress = document.getElementById("topProgress");
-    const resultTitle = document.getElementById("resultTitle");
-    const resultText = document.getElementById("resultText");
-    const debugToggle = document.getElementById("debugToggle");
-    const scoreBox = document.getElementById("scoreBox");
-
-    let currentQuestionIndex = 0;
-    let selectedAnswers = [];
-
-    function showScreen(screen) {
-      [startScreen, quizScreen, resultScreen].forEach((el) => {
-        el.classList.remove("is-visible");
-      });
-
-      screen.classList.add("is-visible");
-      quizScreen.classList.toggle("quiz", screen === quizScreen);
-      resultScreen.classList.toggle("result", screen === resultScreen);
-      topProgress.classList.toggle("is-visible", screen === quizScreen);
+    function startQuiz() {
+      document.querySelector(".hero").classList.add("compact");
+      questions = createShuffledQuestions();
+      selectedAnswers = Array(questions.length).fill(null);
+      currentQuestion = 0;
+      document.getElementById("startScreen").classList.add("hidden");
+      document.getElementById("startMeta").classList.add("hidden");
+      document.getElementById("questionScreen").classList.remove("hidden");
+      renderQuestions();
+      updateView();
     }
 
-    function renderQuestion() {
-      const question = questions[currentQuestionIndex];
-      const questionPosition = currentQuestionIndex + 1;
-      const total = questions.length;
+    function renderQuestions() {
+      const container = document.getElementById("questionsContainer");
+      container.innerHTML = "";
 
-      questionNumber.textContent = `Frage ${questionPosition} von ${total}`;
-      topProgress.textContent = `Frage ${questionPosition} / ${total}`;
-      questionTitle.textContent = question.text;
-      progressBar.style.width = `${((questionPosition - 1) / total) * 100}%`;
+      questions.forEach((item, questionIndex) => {
+        const questionEl = document.createElement("section");
+        questionEl.className = "question";
+        questionEl.id = `question-${questionIndex}`;
 
-      answersEl.innerHTML = "";
+        const title = document.createElement("h2");
+        title.textContent = item.question;
+        questionEl.appendChild(title);
 
-      question.answers.forEach((answer, index) => {
-        const btn = document.createElement("button");
-        const selectedAnswer = selectedAnswers[currentQuestionIndex];
-        const isSelected = selectedAnswer && selectedAnswer.text === answer.text && selectedAnswer.category === answer.category;
+        const answersEl = document.createElement("div");
+        answersEl.className = "answers";
 
-        btn.className = `answer${isSelected ? " is-selected" : ""}`;
-        btn.type = "button";
-        btn.setAttribute("data-category", answer.category);
-        btn.innerHTML = `
-          <span class="answer-letter">${String.fromCharCode(65 + index)}</span>
-          <span class="answer-copy">${answer.text}</span>
-        `;
-        btn.addEventListener("click", () => selectAnswer(answer));
-        answersEl.appendChild(btn);
+        item.answers.forEach((answer, answerIndex) => {
+          const button = document.createElement("button");
+          button.className = "answer";
+          button.type = "button";
+          button.innerHTML = `<strong>${String.fromCharCode(65 + answerIndex)}.</strong> ${answer.text}`;
+          button.onclick = () => selectAnswer(questionIndex, answerIndex);
+          answersEl.appendChild(button);
+        });
+
+        questionEl.appendChild(answersEl);
+        container.appendChild(questionEl);
       });
-
-      backBtn.disabled = currentQuestionIndex === 0;
-      nextBtn.disabled = !selectedAnswers[currentQuestionIndex];
-      nextBtn.textContent = currentQuestionIndex === questions.length - 1 ? "Auswerten" : "Weiter";
     }
 
-    function selectAnswer(answer) {
-      selectedAnswers[currentQuestionIndex] = answer;
-      renderQuestion();
+    function selectAnswer(questionIndex, answerIndex) {
+      selectedAnswers[questionIndex] = answerIndex;
+      updateView();
+    }
+
+    function updateView() {
+      document.querySelectorAll(".question").forEach((el, index) => {
+        el.classList.toggle("active", index === currentQuestion);
+      });
+
+      document.querySelectorAll(`#question-${currentQuestion} .answer`).forEach((button, index) => {
+        button.classList.toggle("selected", selectedAnswers[currentQuestion] === index);
+      });
+
+      const answeredCount = selectedAnswers.filter(answer => answer !== null).length;
+      const progress = (answeredCount / questions.length) * 100;
+
+      document.getElementById("questionCounter").textContent = `Frage ${currentQuestion + 1} von ${questions.length}`;
+      document.getElementById("answeredCounter").textContent = `${answeredCount} beantwortet`;
+      document.getElementById("progressBar").style.width = `${progress}%`;
+
+      document.getElementById("backButton").disabled = currentQuestion === 0;
+      document.getElementById("nextButton").disabled = selectedAnswers[currentQuestion] === null;
+      document.getElementById("nextButton").textContent = currentQuestion === questions.length - 1 ? "Auswerten" : "Weiter";
     }
 
     function nextQuestion() {
-      if (!selectedAnswers[currentQuestionIndex]) return;
+      if (selectedAnswers[currentQuestion] === null) return;
 
-      if (currentQuestionIndex < questions.length - 1) {
-        currentQuestionIndex += 1;
-        renderQuestion();
+      if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        updateView();
       } else {
-        progressBar.style.width = "100%";
         showResult();
       }
     }
 
-    function calculateScores() {
-      return selectedAnswers.reduce((scores, answer) => {
-        if (answer && answer.category) {
-          scores[answer.category] += 1;
-        }
-        return scores;
-      }, {
-        [RESULT_KEYS.ZEITRAUM]: 0,
-        [RESULT_KEYS.FREUNDE]: 0,
-        [RESULT_KEYS.GOTT]: 0
-      });
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        updateView();
+      }
     }
 
-    function determineWinner(scores) {
-      let highestScore = Math.max(...Object.values(scores));
-      return resultPriority.find((resultKey) => scores[resultKey] === highestScore);
+    function calculateScores() {
+      const scores = {
+        zeitraum: 0,
+        gott: 0,
+        freunde: 0
+      };
+
+      selectedAnswers.forEach((answerIndex, questionIndex) => {
+        const category = questions[questionIndex].answers[answerIndex].category;
+        scores[category]++;
+      });
+
+      return scores;
+    }
+
+    function getWinner(scores) {
+      const highestScore = Math.max(...Object.values(scores));
+      const winners = Object.keys(scores).filter(key => scores[key] === highestScore);
+
+      winners.sort((a, b) => categories[a].priority - categories[b].priority);
+
+      return {
+        winner: winners[0],
+        tied: winners.length > 1,
+        tiedCategories: winners,
+        highestScore
+      };
     }
 
     function showResult() {
       const scores = calculateScores();
-      const winnerKey = determineWinner(scores);
-      const winner = resultData[winnerKey];
+      const result = getWinner(scores);
+      const winnerData = categories[result.winner];
 
-      resultTitle.textContent = winner.title;
-      resultText.innerHTML = winner.text;
-      renderScoreBox(scores, winnerKey);
-      scoreBox.classList.remove("is-visible");
-      debugToggle.textContent = "Punkte anzeigen";
-      showScreen(resultScreen);
+      document.getElementById("questionScreen").classList.add("hidden");
+      document.getElementById("resultScreen").classList.add("active");
+
+      renderScores(scores);
+
+      document.getElementById("resultTitle").textContent = winnerData.title;
+      document.getElementById("resultText").textContent = winnerData.text;
+
+      const tieNote = document.getElementById("tieNote");
+      if (result.tied) {
+        const others = result.tiedCategories
+          .filter(key => key !== result.winner)
+          .map(key => categories[key].label);
+
+        tieNote.textContent = `Bei dir zeigen sich mehrere nächste Schritte. Am stärksten liegt dein Ergebnis bei ${winnerData.label}. Ebenfalls sichtbar: ${others.join(" und ")}.`;
+        tieNote.classList.remove("hidden");
+      } else {
+        tieNote.classList.add("hidden");
+      }
     }
 
-    function renderScoreBox(scores, winnerKey) {
-      scoreBox.innerHTML = "";
+    function renderScores(scores) {
+      const container = document.getElementById("scoresContainer");
+      container.innerHTML = "";
 
-      Object.entries(resultData).forEach(([key, data]) => {
+      Object.keys(categories).forEach(key => {
         const row = document.createElement("div");
         row.className = "score-row";
-        row.innerHTML = `
-          <span class="score-name">${key === winnerKey ? "✓ " : ""}${data.label}</span>
-          <span class="score-value">${scores[key]}</span>
-        `;
-        scoreBox.appendChild(row);
+
+        const label = document.createElement("div");
+        label.className = "score-label";
+        label.textContent = categories[key].label;
+
+        const track = document.createElement("div");
+        track.className = "score-track";
+
+        const fill = document.createElement("div");
+        fill.className = "score-fill";
+        fill.style.width = `${(scores[key] / questions.length) * 100}%`;
+
+        const number = document.createElement("div");
+        number.className = "score-number";
+        number.textContent = scores[key];
+
+        track.appendChild(fill);
+        row.appendChild(label);
+        row.appendChild(track);
+        row.appendChild(number);
+        container.appendChild(row);
       });
     }
 
-    function restart() {
-      currentQuestionIndex = 0;
-      selectedAnswers = Array(baseQuestions.length).fill(null);
-      scoreBox.classList.remove("is-visible");
-      createQuizRun();
-      renderQuestion();
-      showScreen(startScreen);
+    function restartQuiz() {
+      currentQuestion = 0;
+      questions = [];
+      selectedAnswers = [];
+      document.getElementById("resultScreen").classList.remove("active");
+      document.querySelector(".hero").classList.remove("compact");
+      document.getElementById("startScreen").classList.remove("hidden");
+      document.getElementById("startMeta").classList.remove("hidden");
+      document.getElementById("questionScreen").classList.add("hidden");
+      document.getElementById("progressBar").style.width = "0%";
     }
-
-    startBtn.addEventListener("click", () => {
-      currentQuestionIndex = 0;
-      selectedAnswers = Array(baseQuestions.length).fill(null);
-      createQuizRun();
-      renderQuestion();
-      showScreen(quizScreen);
-    });
-
-    restartBtn.addEventListener("click", restart);
-
-    backBtn.addEventListener("click", () => {
-      if (currentQuestionIndex > 0) {
-        currentQuestionIndex -= 1;
-        renderQuestion();
-      }
-    });
-
-    nextBtn.addEventListener("click", nextQuestion);
-
-    nextBtn.addEventListener("click", nextQuestion);
-
-    debugToggle.addEventListener("click", () => {
-      const isVisible = scoreBox.classList.toggle("is-visible");
-      debugToggle.textContent = isVisible ? "Punkte ausblenden" : "Punkte anzeigen";
-    });
   </script>
 </body>
 </html>
