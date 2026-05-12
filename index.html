@@ -41,14 +41,17 @@
     }
 
     body {
-      min-height: 100vh;
       margin: 0;
       font-family: var(--font-body);
       color: var(--dark);
       background:
-        radial-gradient(circle at 12% 8%, rgba(211, 216, 0, 0.24) 0 12rem, transparent 24rem),
-        radial-gradient(circle at 88% 14%, rgba(124, 142, 142, 0.18) 0 10rem, transparent 22rem),
-        linear-gradient(145deg, #ffffff 0%, #f6f8f5 46%, #eef3f1 100%);
+        radial-gradient(circle at 18% 8%, rgba(211, 216, 0, 0.2) 0, transparent 28%),
+        radial-gradient(circle at 82% 16%, rgba(124, 142, 142, 0.22) 0, transparent 30%),
+        linear-gradient(135deg, #ffffff 0%, #f5f7f3 48%, #edf2ef 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 28px 16px;
     }
 
     button {
@@ -56,12 +59,12 @@
     }
 
     .page {
-      width: min(960px, 100%);
-      min-height: 100vh;
-      margin: 0 auto;
-      padding: 16px 16px 28px;
-      display: flex;
-      flex-direction: column;
+      width: 100%;
+      max-width: 880px;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      display: block;
     }
 
     .topbar {
@@ -69,7 +72,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 14px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .brand {
@@ -132,20 +135,18 @@
     }
 
     .shell {
-      flex: 1;
-      display: grid;
-      align-items: start;
-      padding-top: clamp(18px, 8vh, 72px);
+      display: block;
+      padding-top: 0;
     }
 
     .card {
       width: 100%;
-      background: rgba(255, 255, 255, 0.86);
-      border: 1px solid rgba(255, 255, 255, 0.82);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(255, 255, 255, 0.76);
+      border-radius: 26px;
+      box-shadow: 0 22px 55px rgba(69, 73, 64, 0.16);
       overflow: hidden;
-      backdrop-filter: blur(18px);
+      backdrop-filter: blur(14px);
     }
 
     .hero {
@@ -278,7 +279,7 @@
 
     .quiz {
       display: none;
-      padding: clamp(20px, 5vw, 42px);
+      padding: 26px 30px 32px;
       gap: 22px;
     }
 
@@ -317,11 +318,12 @@
     }
 
     .question-title {
-      font-size: clamp(22px, 4.5vw, 36px);
-      line-height: 1.14;
+      font-size: clamp(1.55rem, 3.7vw, 2.25rem);
+      line-height: 1.22;
       letter-spacing: -0.015em;
       color: var(--black);
-      font-weight: 650;
+      font-weight: 700;
+      margin: 0;
     }
 
     .progress-track {
@@ -348,19 +350,19 @@
       appearance: none;
       width: 100%;
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      background: rgba(255, 255, 255, 0.88);
+      border-radius: 20px;
+      background: #ffffff;
       color: var(--dark);
-      padding: 17px 17px 17px 15px;
+      padding: 17px 18px;
       display: grid;
       grid-template-columns: 38px 1fr;
       gap: 13px;
-      align-items: start;
+      align-items: center;
       text-align: left;
       cursor: pointer;
-      box-shadow: 0 8px 22px rgba(69, 73, 64, 0.07);
-      transition: transform 150ms ease, border 150ms ease, background 150ms ease, box-shadow 150ms ease;
-      min-height: 78px;
+      box-shadow: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+      min-height: 0;
     }
 
     .answer:hover {
@@ -370,9 +372,9 @@
     }
 
     .answer.is-selected {
-      border-color: rgba(211, 216, 0, 0.9);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(211, 216, 0, 0.12));
-      box-shadow: 0 13px 30px rgba(211, 216, 0, 0.18);
+      border-color: var(--lime);
+      background: rgba(211, 216, 0, 0.2);
+      box-shadow: 0 0 0 3px rgba(211, 216, 0, 0.35);
     }
 
     .answer.is-selected .answer-letter {
@@ -402,8 +404,8 @@
     }
 
     .answer-copy {
-      font-size: clamp(16px, 3.2vw, 19px);
-      line-height: 1.3;
+      font-size: 1rem;
+      line-height: 1.45;
       font-weight: 500;
     }
 
@@ -647,7 +649,7 @@
 
           <footer class="quiz-footer">
             <button class="btn btn-ghost" type="button" id="backBtn">Zurück</button>
-
+            <button class="btn btn-primary" type="button" id="nextBtn" disabled>Weiter</button>
           </footer>
         </section>
 
@@ -702,10 +704,10 @@
       {
         text: "Was war dein Ergebnis aus dem ersten Tool?",
         answers: [
-          { text: "<strong>Optionen-Nebel</strong>", category: RESULT_KEYS.FREUNDE },
-          { text: "<strong>Identitäts-Nebel</strong>", category: RESULT_KEYS.FREUNDE },
-          { text: "<strong>Leistungs-Nebel</strong>", category: RESULT_KEYS.GOTT },
-          { text: "<strong>Mental-Health-Nebel</strong>", category: RESULT_KEYS.ZEITRAUM }
+          { text: "Optionen-Nebel", category: RESULT_KEYS.FREUNDE },
+          { text: "Identitäts-Nebel", category: RESULT_KEYS.FREUNDE },
+          { text: "Leistungs-Nebel", category: RESULT_KEYS.GOTT },
+          { text: "Mental-Health-Nebel", category: RESULT_KEYS.ZEITRAUM }
         ]
       },
       {
@@ -790,6 +792,8 @@
     const startBtn = document.getElementById("startBtn");
     const restartBtn = document.getElementById("restartBtn");
     const backBtn = document.getElementById("backBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const nextBtn = document.getElementById("nextBtn");
     const questionNumber = document.getElementById("questionNumber");
     const questionTitle = document.getElementById("questionTitle");
     const answersEl = document.getElementById("answers");
@@ -842,11 +846,18 @@
         answersEl.appendChild(btn);
       });
 
-      backBtn.style.visibility = currentQuestionIndex === 0 ? "hidden" : "visible";
+      backBtn.disabled = currentQuestionIndex === 0;
+      nextBtn.disabled = !selectedAnswers[currentQuestionIndex];
+      nextBtn.textContent = currentQuestionIndex === questions.length - 1 ? "Auswerten" : "Weiter";
     }
 
     function selectAnswer(answer) {
       selectedAnswers[currentQuestionIndex] = answer;
+      renderQuestion();
+    }
+
+    function nextQuestion() {
+      if (!selectedAnswers[currentQuestionIndex]) return;
 
       if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex += 1;
@@ -904,7 +915,7 @@
 
     function restart() {
       currentQuestionIndex = 0;
-      selectedAnswers = [];
+      selectedAnswers = Array(baseQuestions.length).fill(null);
       scoreBox.classList.remove("is-visible");
       createQuizRun();
       renderQuestion();
@@ -913,7 +924,7 @@
 
     startBtn.addEventListener("click", () => {
       currentQuestionIndex = 0;
-      selectedAnswers = [];
+      selectedAnswers = Array(baseQuestions.length).fill(null);
       createQuizRun();
       renderQuestion();
       showScreen(quizScreen);
@@ -923,11 +934,14 @@
 
     backBtn.addEventListener("click", () => {
       if (currentQuestionIndex > 0) {
-        selectedAnswers[currentQuestionIndex] = undefined;
         currentQuestionIndex -= 1;
         renderQuestion();
       }
     });
+
+    nextBtn.addEventListener("click", nextQuestion);
+
+    nextBtn.addEventListener("click", nextQuestion);
 
     debugToggle.addEventListener("click", () => {
       const isVisible = scoreBox.classList.toggle("is-visible");
