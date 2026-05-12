@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Next Step Check | TMT 2026</title>
+  <title>Next-Step-Check | TMT 2026</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +18,6 @@
       --dark: #454940;
       --black: #050505;
       --bg: #f7f8f1;
-      --card: #ffffff;
       --text: #252821;
       --muted: #62685f;
       --line: rgba(69, 73, 64, 0.16);
@@ -48,7 +47,7 @@
 
     main {
       width: 100%;
-      max-width: 880px;
+      max-width: 900px;
     }
 
     .card {
@@ -134,7 +133,7 @@
     .intro {
       font-size: 1.08rem;
       line-height: 1.6;
-      max-width: 720px;
+      max-width: 730px;
       color: var(--muted);
       margin: 0;
     }
@@ -437,7 +436,7 @@
           <div class="brandmark">
             <span>TMT 2026</span>
           </div>
-          <div class="badge">Next Step Check</div>
+          <div class="badge">Next-Step-Check</div>
         </div>
 
         <h1>Was ist dein nächster Schritt?</h1>
@@ -449,7 +448,7 @@
       <div class="content" id="quizArea">
         <div class="meta" id="startMeta">
           <div class="meta-item"><strong>Dauer</strong>ca. 3 Minuten</div>
-          <div class="meta-item"><strong>Format</strong>7 Multiple-Choice-Fragen</div>
+          <div class="meta-item"><strong>Format</strong>8 Multiple-Choice-Fragen</div>
           <div class="meta-item"><strong>Ziel</strong>Ein möglicher nächster Schritt</div>
         </div>
 
@@ -460,7 +459,7 @@
         <div id="questionScreen" class="hidden">
           <div class="progress-wrap">
             <div class="progress-top">
-              <span id="questionCounter">Frage 1 von 7</span>
+              <span id="questionCounter">Frage 1 von 8</span>
               <span id="answeredCounter">0 beantwortet</span>
             </div>
             <div class="progress-track">
@@ -487,6 +486,10 @@
             <p id="resultText"></p>
           </div>
 
+          <div class="note">
+            Mach dir gerne einen Screenshot von deinem Ergebnis, damit du deinen nächsten Schritt später nochmal vor Augen hast.
+          </div>
+
           <div id="tieNote" class="note hidden"></div>
 
           <div class="nav">
@@ -499,23 +502,29 @@
 
   <script>
     const categories = {
-      zeitraum: {
-        label: "Zeitraum – Gespräch & Gebet",
+      nichtAllein: {
+        label: "Nicht allein bleiben",
         priority: 1,
-        title: "Dein nächster Schritt: Zeitraum – Gespräch & Gebet",
-        text: "Vielleicht ist dein nächster Schritt, nicht allein mit deinem Nebel zu bleiben. Geh in den Zeitraum, sprich ehrlich mit jemandem und lass für dich beten."
+        title: "Dein nächster Schritt: Nicht allein bleiben",
+        text: "Vielleicht hilft es dir gerade, wenn jemand anderes mit auf deinen Nebel schaut. Geh gerne zum Zeitraum-Angebot hinter dem Veranstaltungszelt, sprich mit jemandem aus deiner Gruppe oder lass für dich beten. Du musst das nicht allein sortieren."
       },
       gott: {
         label: "Zeit mit Gott suchen",
         priority: 2,
         title: "Dein nächster Schritt: Zeit mit Gott suchen",
-        text: "Vielleicht ist dein nächster Schritt, nicht weiter allein zu kämpfen. Such bewusst Zeit mit Gott, im Lobpreis, im Gebet oder beim Bibellesen."
+        text: "Vielleicht ist dein nächster Schritt, nicht weiter allein zu kämpfen. Such bewusst Zeit mit Gott, im Lobpreis, im Gebet oder beim Bibellesen. Du musst nicht erst alles im Griff haben, um zu Jesus zu kommen."
+      },
+      stille: {
+        label: "Stille suchen",
+        priority: 3,
+        title: "Dein nächster Schritt: Stille suchen",
+        text: "Vielleicht ist dein nächster Schritt, heute Abend oder morgen bewusst eine halbe Stunde still zu werden, am besten ohne Handy und ohne andere Leute. Such dir hier im Monbachtal einen ruhigen Ort, nimm dir einen Bibelvers, sprich ein Gebet oder fang an aufzuschreiben, was in dir los ist."
       },
       freunde: {
         label: "Zeit mit Freunden genießen & Handy weg",
-        priority: 3,
+        priority: 4,
         title: "Dein nächster Schritt: Zeit mit Freunden genießen & Handy weg",
-        text: "Vielleicht ist dein nächster Schritt, nicht direkt wieder in Ablenkung zu gehen. Leg das Handy bewusst weg und genieß echte Zeit mit Menschen um dich herum."
+        text: "Vielleicht ist dein nächster Schritt, nicht direkt wieder in Ablenkung zu gehen. Leg dein Handy bewusst weg und genieß echte Zeit mit Menschen um dich herum."
       }
     };
 
@@ -523,10 +532,10 @@
       {
         question: "Was war dein Ergebnis aus dem ersten Tool?",
         answers: [
-          { text: "<strong>Optionen-Nebel</strong>", category: "freunde" },
+          { text: "<strong>Optionen-Nebel</strong>", category: "stille" },
           { text: "<strong>Identitäts-Nebel</strong>", category: "freunde" },
           { text: "<strong>Leistungs-Nebel</strong>", category: "gott" },
-          { text: "<strong>Mental-Health-Nebel</strong>", category: "zeitraum" }
+          { text: "<strong>Innerer Nebel</strong>", category: "nichtAllein" }
         ]
       },
       {
@@ -534,8 +543,8 @@
         answers: [
           { text: "Ich <strong>lenke mich ab</strong>, damit ich es erstmal nicht so merke.", category: "freunde" },
           { text: "Ich versuche, mich <strong>zusammenzureißen</strong> und es selbst zu regeln.", category: "gott" },
-          { text: "Ich behalte es eher <strong>für mich</strong>, auch wenn es eigentlich raus müsste.", category: "zeitraum" },
-          { text: "Ich mache einfach <strong>weiter</strong> und merke erst später, dass es zu viel war.", category: "zeitraum" }
+          { text: "Ich behalte es eher <strong>für mich</strong>, auch wenn es eigentlich raus müsste.", category: "nichtAllein" },
+          { text: "Ich brauche Abstand, merke aber kaum, wann ich wirklich <strong>still</strong> werde.", category: "stille" }
         ]
       },
       {
@@ -543,44 +552,53 @@
         answers: [
           { text: "Ich bin oft am <strong>Handy</strong>, obwohl es mir danach nicht wirklich besser geht.", category: "freunde" },
           { text: "Ich rede mir ein, dass ich es <strong>allein schaffen</strong> muss.", category: "gott" },
-          { text: "Ich würde manchmal gerne <strong>reden</strong>, weiß aber nicht, wie ich anfangen soll.", category: "zeitraum" },
-          { text: "Ich merke, dass ich <strong>Gott</strong> oft erst suche, wenn ich nicht mehr weiterweiß.", category: "gott" }
+          { text: "Ich würde manchmal gerne <strong>reden</strong>, weiß aber nicht, wie ich anfangen soll.", category: "nichtAllein" },
+          { text: "Ich habe selten echte <strong>Ruhe</strong>, weil immer irgendwas läuft.", category: "stille" }
         ]
       },
       {
         question: "Was wäre für dich gerade der größte Unterschied zum normalen Weitermachen?",
         answers: [
           { text: "Nicht direkt wieder ans <strong>Handy</strong> gehen, sobald es unangenehm wird.", category: "freunde" },
-          { text: "Nicht alles nur <strong>mit mir selbst</strong> ausmachen.", category: "zeitraum" },
-          { text: "Nicht sofort wieder <strong>funktionieren</strong> müssen.", category: "gott" },
-          { text: "Nicht nur bei anderen sein, sondern auch wirklich <strong>da sein</strong>.", category: "freunde" }
+          { text: "Nicht alles nur <strong>mit mir selbst</strong> ausmachen.", category: "nichtAllein" },
+          { text: "Nicht sofort wieder <strong>funktionieren</strong> müssen, sondern Gott ehrlich suchen.", category: "gott" },
+          { text: "Nicht sofort wieder reden, scrollen oder machen, sondern einmal <strong>still werden</strong>.", category: "stille" }
         ]
       },
       {
         question: "Was würde dir gerade wahrscheinlich guttun?",
         answers: [
-          { text: "Eine <strong>ehrliche Unterhaltung</strong> mit jemandem, der zuhört und mit mir betet.", category: "zeitraum" },
+          { text: "Eine <strong>ehrliche Unterhaltung</strong> mit jemandem, der zuhört und mit mir betet.", category: "nichtAllein" },
           { text: "Eine gute Zeit mit Leuten, ohne ständig aufs <strong>Handy</strong> zu schauen.", category: "freunde" },
-          { text: "Ein ruhiger Moment <strong>mit Gott</strong>, ohne etwas beweisen zu müssen.", category: "gott" },
-          { text: "Jemand, der mit mir kurz <strong>sortiert</strong>, was gerade eigentlich los ist.", category: "zeitraum" }
+          { text: "Ein Moment <strong>mit Gott</strong>, ohne etwas beweisen zu müssen.", category: "gott" },
+          { text: "Eine halbe Stunde <strong>Ruhe</strong>, um zu beten, zu schreiben oder einfach ehrlich vor Gott zu sein.", category: "stille" }
         ]
       },
       {
         question: "Welcher Schritt fühlt sich für dich am ehesten realistisch an?",
         answers: [
           { text: "Ich könnte mein Handy heute bewusst für eine Zeit <strong>weglegen</strong>.", category: "freunde" },
-          { text: "Ich könnte jemanden aus dem Team oder aus meinem Umfeld <strong>ansprechen</strong>.", category: "zeitraum" },
-          { text: "Ich könnte mir Zeit nehmen, um zu <strong>beten</strong>, Bibel zu lesen oder im Lobpreis ehrlich mitzugehen.", category: "gott" },
-          { text: "Ich könnte bewusst mit Freunden unterwegs sein, ohne mich nur <strong>abzulenken</strong>.", category: "freunde" }
+          { text: "Ich könnte jemanden aus dem Team oder aus meiner Gruppe <strong>ansprechen</strong>.", category: "nichtAllein" },
+          { text: "Ich könnte im Lobpreis, im Gebet oder beim Bibellesen <strong>ehrlich mitgehen</strong>.", category: "gott" },
+          { text: "Ich könnte mir heute Abend oder morgen bewusst eine <strong>ruhige halbe Stunde</strong> nehmen.", category: "stille" }
         ]
       },
       {
         question: "Wenn du an Petrus auf dem Wasser denkst: Was passt gerade am ehesten zu dir?",
         answers: [
           { text: "Ich merke, dass ich oft auf <strong>alles andere</strong> schaue und mich davon treiben lasse.", category: "freunde" },
-          { text: "Ich merke, dass ich gerade eine <strong>Hand</strong> brauche, nicht nur einen guten Vorsatz.", category: "zeitraum" },
+          { text: "Ich merke, dass ich gerade eine <strong>Hand</strong> brauche, nicht nur einen guten Vorsatz.", category: "nichtAllein" },
           { text: "Ich merke, dass ich wieder mehr auf <strong>Jesus</strong> schauen will, statt alles selbst zu halten.", category: "gott" },
-          { text: "Ich merke, dass ich nicht so tun will, als wäre <strong>alles klar</strong>.", category: "zeitraum" }
+          { text: "Ich merke, dass ich erstmal <strong>ruhig werden</strong> muss, um überhaupt wieder klarer zu sehen.", category: "stille" }
+        ]
+      },
+      {
+        question: "Was hält dich gerade am ehesten davon ab, einen nächsten Schritt zu gehen?",
+        answers: [
+          { text: "Ich lande schnell wieder in <strong>Ablenkung</strong> oder am Handy.", category: "freunde" },
+          { text: "Ich traue mich nicht so richtig, jemanden <strong>anzusprechen</strong>.", category: "nichtAllein" },
+          { text: "Ich habe das Gefühl, ich müsste erst wieder <strong>besser</strong> sein, bevor ich zu Gott komme.", category: "gott" },
+          { text: "Ich habe kaum Momente, in denen ich wirklich <strong>ohne Input</strong> bin.", category: "stille" }
         ]
       }
     ];
@@ -591,10 +609,12 @@
 
     function shuffleArray(array) {
       const copy = [...array];
+
       for (let i = copy.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [copy[i], copy[j]] = [copy[j], copy[i]];
       }
+
       return copy;
     }
 
@@ -693,8 +713,9 @@
 
     function calculateScores() {
       const scores = {
-        zeitraum: 0,
+        nichtAllein: 0,
         gott: 0,
+        stille: 0,
         freunde: 0
       };
 
